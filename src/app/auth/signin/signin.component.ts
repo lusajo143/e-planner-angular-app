@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog'
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+
+  open() {
+    this.dialog.open(DialogComponent)
+  }
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
 }
